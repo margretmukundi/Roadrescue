@@ -1,7 +1,7 @@
 {
-  "name": "roadrescue",
+  "name": "resqgo",
   "version": "1.0.0",
-  "description": "RoadRescue — Professional Emergency Mechanic Marketplace & Roadside Assistance Platform",
+  "description": "ResQgo — Professional Emergency Mechanic Marketplace & Roadside Assistance Platform",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

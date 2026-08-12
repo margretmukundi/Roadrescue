@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "name": "Margret (Car Owner)",
+    "email": "margret@example.com",
+    "phone": "0712345678",
+    "password_hash": "$2a$10$uxLPAlW1Cd2rrnK/voqvg.8yfHAupBIz8d1p3Mlch6BcHNVC4BW5.",
+    "role": "owner"
+  },
+  {
+    "id": 2,
+    "name": "John Doe (Car Owner)",
+    "email": "john@example.com",
+    "phone": "0712345678",
+    "password_hash": "$2a$10$kr4XfqVMQR5kHnWkGcbHh.lE47GXTNTyoqh94MXJNN51P6RbNhijO",
+    "role": "owner"
+  },
+  {
+    "id": 101,
+    "name": "David Kamau (Apex Auto)",
+    "email": "david@apex.co.ke",
+    "phone": "0712345678",
+    "password_hash": "$2a$10$JYz8SXNYwxNrR3MmbKNWG.ZKAN1Xc7G79mNHm/D204ahIt61GJNPi",
+    "role": "mechanic"
+  },
+  {
+    "id": 105,
+    "name": "Jane Wanjiru",
+    "email": "janewanjiru@gmail.com",
+    "phone": "0712345678",
+    "password_hash": "$2a$10$Rh4kFhbavkxTIvzRWkKsa.k22mK3qqfplNXJIi5vZ3sVKd6eeO9x2",
+    "role": "mechanic"
+  },
+  {
+    "id": 201,
+    "name": "Apex Logistics Fleet",
+    "email": "fleet@example.com",
+    "phone": "0722000111",
+    "password_hash": "$2a$10$peo4nGZ1ihsy6d2HIY1HaeEWC/OsFoOk99s9Mpl4ddALSY8JNtplK",
+    "role": "fleet_owner"
+  },
+  {
+    "id": 999,
+    "name": "System Administrator",
+    "email": "admin@resqgo.co.ke",
+    "phone": "0700900000",
+    "password_hash": "$2a$10$ERDSCdtNb2qwyTwLH/UUAO1RGXHPd.WnRazXbfL6Vz0yXqwkevNrO",
+    "role": "admin"
+  },
+  {
+    "id": 1786281971872,
+    "name": "Margret Mukundi",
+    "email": "margretmukundi05@gmail.com",
+    "phone": "0791781961",
+    "password_hash": "$2a$10$ZV.oaX2KuyMDVmiSLltMuuKhfC4pCaL52dxPpLdK0q2LHfuTdf44W",
+    "role": "owner"
+  },
+  {
+    "id": 1786282059555,
+    "name": "Jane Wanjiru",
+    "email": "Janemuthoni@gmail.com",
+    "phone": "0722000000",
+    "password_hash": "$2a$10$O4OufQS87.erxbuH2Z5ife2.PkQLzkTI9JhzcjR5lFqx9Q28g/qWe",
+    "role": "mechanic"
+  },
+  {
+    "id": 1786283975589,
+    "name": "Allan",
+    "email": "allanatte@gmail.com",
+    "phone": "0791781961",
+    "password_hash": "$2a$10$uZZrS3ZOI9IXxYStZpoUqOzJI1HonwPdvo/9iT5YN8/kX5acUd.UW",
+    "role": "owner"
+  },
+  {
+    "id": 1786547620517,
+    "name": "Eliza Wanjiru",
+    "email": "elizawanjiru@gmail.com",
+    "phone": "0712345678",
+    "password_hash": "$2a$10$bwVNJv638Ndng0A6wnP7kO5eEfQ9ijGmFIEJH1fCVreoox09FjFj.",
+    "role": "fleet_owner"
+  },
+  {
+    "id": 1786547746583,
+    "name": "Carol caroline",
+    "email": "caroll@gmail.com",
+    "phone": "0712345678",
+    "password_hash": "$2a$10$2YB0ktFn7QXJX3Bi7F3o6ebvUG/ReNPayHj6KO0RErzHwkOOax4Ni",
+    "role": "mechanic"
+  },
+  {
+    "id": 1786548136804,
+    "name": "Allan",
+    "email": "allan@gmail.com",
+    "phone": "0712345678",
+    "password_hash": "$2a$10$YMt6OrpxHsrOIUNyocBHvu11HGVVdQYcJR0PA4vo5iyiwzLpjMTmG",
+    "role": "admin"
+  }
+]

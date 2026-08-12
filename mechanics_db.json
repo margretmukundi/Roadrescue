@@ -1,0 +1,52 @@
+{
+  "1": {
+    "user_id": "1",
+    "is_verified": true,
+    "trust_tier": "verified"
+  },
+  "101": {
+    "user_id": 101,
+    "bio": "Expert Mobile Mechanic with 8+ years experience",
+    "specializations": "Engine Diagnosis, Brakes, Transmission",
+    "hourly_rate": 1500,
+    "is_available": true,
+    "is_mobile": true,
+    "service_radius_km": 15,
+    "id_document_url": "/uploads/demo_id.pdf",
+    "cert_document_url": "/uploads/demo_cert.pdf",
+    "is_verified": true,
+    "trust_tier": "elite"
+  },
+  "105": {
+    "user_id": 105,
+    "bio": "Professional Mobile Technician",
+    "specializations": "Diagnostics & Auto Repairs",
+    "hourly_rate": 2000,
+    "is_available": true,
+    "is_mobile": true,
+    "service_radius_km": 15,
+    "id_document_url": "/uploads/id_uploaded.png",
+    "cert_document_url": "/uploads/cert_uploaded.png",
+    "is_verified": true,
+    "trust_tier": "verified"
+  },
+  "1786282059555": {
+    "user_id": 1786282059555,
+    "is_verified": true,
+    "trust_tier": "verified",
+    "id_document_url": "/uploads/1786286260286-951495668.png",
+    "cert_document_url": "/uploads/1786286260287-644539692.png",
+    "bio": "qwetrtyui",
+    "hourly_rate": "2000",
+    "is_available": true,
+    "is_mobile": false,
+    "service_radius_km": 10
+  },
+  "1786547746583": {
+    "user_id": 1786547746583,
+    "is_verified": true,
+    "trust_tier": "verified",
+    "id_document_url": "/uploads/1786548287894-325680714.png",
+    "cert_document_url": "/uploads/1786548287897-624903952.png"
+  }
+}

@@ -1,33 +1,34 @@
 /* ==========================================================================
-   ROADRESCUE — DESIGN TOKENS & SYSTEM STYLES
+   RESQGO — MATTE CHARCOAL BLACK & PLATINUM SILVER DESIGN SYSTEM
    ========================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap');
 
 :root {
-  --bg-dark: #000000;
-  --bg-card: #0B0F19;
-  --bg-card-hover: #12192B;
-  --bg-input: #162035;
-  --border: rgba(37, 99, 235, 0.18);
-  --border-light: rgba(37, 99, 235, 0.35);
+  --bg-dark: #08090C;          /* Pure Matte Jet Black */
+  --bg-card: #0F1117;          /* Charcoal Slate Card */
+  --bg-card-hover: #161A23;    /* Elevated Carbon Card */
+  --bg-input: #1B1E28;         /* Dark Steel Input */
+  --border: rgba(255, 255, 255, 0.1);
+  --border-light: rgba(226, 232, 240, 0.25);
   
-  --accent: #2563EB;
-  --accent-hover: #3B82F6;
-  --accent-glow: rgba(37, 99, 235, 0.45);
-  --accent-subtle: rgba(37, 99, 235, 0.15);
+  --accent: #FFFFFF;           /* Crisp Platinum White Primary Accent */
+  --accent-hover: #E2E8F0;     /* Silver Hover */
+  --accent-glow: rgba(255, 255, 255, 0.2);
+  --accent-subtle: rgba(255, 255, 255, 0.08);
   
-  --blue-neon: #00D2FF;
-  --blue-neon-glow: rgba(0, 210, 255, 0.3);
-  --blue-dark: #1E40AF;
+  --silver-light: #F1F5F9;     /* Platinum White Text */
+  --silver-muted: #94A3B8;     /* Muted Steel Grey */
+  --charcoal-dark: #1E222D;    /* Dark Charcoal */
+  --steel: #334155;            /* Border Steel */
   
   --emerald: #10B981;
   --emerald-subtle: rgba(16, 185, 129, 0.15);
   --warn: #F59E0B;
   --warn-subtle: rgba(245, 158, 11, 0.15);
   --danger: #EF4444;
-  --danger-glow: rgba(239, 68, 68, 0.4);
+  --danger-glow: rgba(239, 68, 68, 0.35);
   
-  --text-main: #FFFFFF;
+  --text-main: #F8FAFC;
   --text-muted: #94A3B8;
   --text-faint: #64748B;
   
@@ -37,29 +38,31 @@
   --radius-lg: 20px;
   --radius-md: 12px;
   --radius-sm: 8px;
-  --shadow-main: 0 16px 40px rgba(0, 0, 0, 0.8);
-  --glass-bg: rgba(11, 15, 25, 0.9);
+  --shadow-main: 0 16px 40px rgba(0, 0, 0, 0.95);
+  --glass-bg: rgba(15, 17, 23, 0.95);
   --glass-blur: blur(20px);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
-  scroll-behavior: smooth;
   font-size: 16px;
 }
 
 body {
   background-color: var(--bg-dark);
   background-image: 
-    radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.18) 0%, transparent 45%),
-    radial-gradient(circle at 90% 80%, rgba(0, 210, 255, 0.12) 0%, transparent 45%);
+    radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(30, 41, 59, 0.4) 0%, transparent 50%);
   color: var(--text-main);
   font-family: var(--font-body);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
 }
+
+
+
 
 
 
@@ -178,19 +181,21 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 12px 22px;
-  border-radius: var(--radius-md);
+  padding: 10px 20px;
+  font-family: var(--font-body);
   font-weight: 600;
-  font-size: 0.95rem;
-  transition: all 0.25s ease;
-  white-space: nowrap;
+  font-size: 0.9rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
-  color: #FFFFFF;
-  box-shadow: 0 4px 20px var(--accent-glow);
+  background-color: var(--accent);
+  color: #08090C;
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.15);
 }
 
 .btn-primary:hover {
@@ -270,10 +275,11 @@ button {
    HERO SECTION
    ========================================================================== */
 .hero-section {
-  padding: 80px 0 60px;
+  padding: 16px 0 30px;
   position: relative;
   overflow: hidden;
 }
+
 
 .hero-grid {
   display: grid;
@@ -593,10 +599,12 @@ textarea.form-control {
 }
 
 .portal-tab-btn.active {
-  background: var(--accent);
-  color: #FFF;
-  border-color: var(--accent);
+  background: #FFFFFF;
+  color: #000000 !important;
+  border-color: #FFFFFF;
+  font-weight: 700;
 }
+
 
 .portal-content {
   max-width: 1000px;

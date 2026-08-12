@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RoadRescue — Professional Emergency Mechanic Marketplace & Roadside Assistance</title>
+  <title>ResQgo — Professional Emergency Mechanic Marketplace & Roadside Assistance</title>
   
-  <meta name="description" content="Instant roadside mechanic marketplace. Connect with verified mobile mechanics near you in minutes for emergency breakdowns, advance bookings, and pre-trip inspections.">
-  <meta name="keywords" content="roadside assistance, emergency mechanic, car breakdown repair, mobile mechanic app, towing services">
+  <meta name="description" content="ResQgo instant roadside mechanic marketplace. Connect with verified mobile mechanics near you in minutes for emergency breakdowns, advance bookings, and pre-trip inspections.">
+  <meta name="keywords" content="ResQgo, roadside assistance, emergency mechanic, car breakdown repair, mobile mechanic app, towing services">
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="style.css">
@@ -14,364 +14,92 @@
 <body>
 
   <!-- Toast Notification Wrapper -->
-  <div id="toastWrap" class="toast-wrap"></div>
-
-  <!-- ============================== HEADER / NAVBAR ============================== -->
+  <div id="toastWrap" class="toast-wrap"></div>  <!-- ============================== HEADER / NAVBAR ============================== -->
   <header class="site-header">
     <div class="container nav-wrap">
-      <a href="#home" class="brand-logo">
+      <a href="#" onclick="navigateToPublicPage('home'); return false;" class="brand-logo">
         <span class="brand-dot"></span>
-        <span>RoadRescue</span>
+        <span>ResQgo</span>
       </a>
 
       <ul class="nav-links">
-        <li><a href="#home" class="nav-link active">Home</a></li>
-        <li><a href="#services" class="nav-link">Services</a></li>
-        <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
-        <li><a href="#about" class="nav-link">About Us</a></li>
-        <li><a href="#contact" class="nav-link">Contact Us</a></li>
+        <li><a href="#" id="pnav-home" class="nav-link active" onclick="navigateToPublicPage('home'); return false;">Home</a></li>
+        <li><a href="#" id="pnav-services" class="nav-link" onclick="navigateToPublicPage('services'); return false;">Services</a></li>
+        <li><a href="#" id="pnav-how-it-works" class="nav-link" onclick="navigateToPublicPage('how-it-works'); return false;">How It Works</a></li>
+        <li><a href="#" id="pnav-about" class="nav-link" onclick="navigateToPublicPage('about'); return false;">About Us</a></li>
+        <li><a href="#" id="pnav-contact" class="nav-link" onclick="navigateToPublicPage('contact'); return false;">Contact Us</a></li>
       </ul>
 
       <div class="nav-actions">
+        <button class="btn btn-ghost btn-sm" onclick="openAdminLogin()">🛡️ Admin</button>
         <button class="btn btn-ghost btn-sm" id="navAuthBtn" onclick="openAuthModal('login')">Log In</button>
         <button class="btn btn-primary btn-sm" onclick="handleEmergencyQuickStart()">🚨 Emergency SOS</button>
         <button class="mobile-nav-toggle" onclick="toggleMobileNav()">☰</button>
       </div>
+
+
     </div>
   </header>
 
-  <main>
-    <!-- ============================== HERO SECTION ============================== -->
-    <section id="home" class="hero-section">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">⚡ 24/7 EMERGENCY ROAD RESCUE MARKETPLACE</div>
-          <h1 class="hero-title">Breakdowns Happen. We Get You Back On The <span>Road In Minutes</span>.</h1>
-          <p class="hero-subtitle">
-            Connect instantly with vetted, high-rated mobile mechanics nearby. Live GPS tracking, upfront transparent quotes, and certified pre-journey inspections.
-          </p>
-
-          <div style="display:flex; gap:14px; flex-wrap:wrap;">
-            <button class="btn btn-primary" onclick="openAuthModal('register')">Get Started Free</button>
-            <button class="btn btn-secondary" onclick="openPortalView()">Launch App Portal →</button>
-          </div>
-
-          <div class="hero-stats-row">
-            <div class="stat-card">
-              <h4>18 Mins</h4>
-              <p>Avg arrival time</p>
-            </div>
-            <div class="stat-card">
-              <h4>1,200+</h4>
-              <p>Verified mechanics</p>
-            </div>
-            <div class="stat-card">
-              <h4>4.9 ★</h4>
-              <p>Customer satisfaction</p>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <div class="quick-action-card">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-              <h3 style="font-size:1.15rem;">Request Quick Assistance</h3>
-              <span class="badge badge-accent">Live Matching</span>
-            </div>
-
-            <form onsubmit="return handleHeroQuickSubmit(event)">
-              <div class="form-group">
-                <label>Issue Type</label>
-                <select id="heroIssueType" class="form-control">
-                  <option value="emergency">🚨 Emergency Breakdown (Immediate Response)</option>
-                  <option value="quotation">💬 Request Quotes (Multiple Bids)</option>
-                  <option value="advance_booking">📅 Book Mechanic in Advance</option>
-                  <option value="road_trip">🧭 Pre-Trip Inspection & Clearance</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label>Vehicle Model & Location</label>
-                <input type="text" id="heroVehicleInfo" class="form-control" placeholder="e.g. Toyota Prado, Nakuru Highway" required>
-              </div>
-
-              <div class="form-group">
-                <label>Problem Description</label>
-                <textarea id="heroDesc" class="form-control" placeholder="Describe issue (e.g. flat tyre, overheating engine, battery dead)..." required></textarea>
-              </div>
-
-              <button type="submit" class="btn btn-primary" style="width:100%;">Dispatch & Find Mechanics</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================== SERVICES SECTION ============================== -->
-    <section id="services" class="section">
-      <div class="container">
-        <div class="section-header">
-          <div class="eyebrow">Comprehensive Roadside Care</div>
-          <h2>Designed for Every Roadside Scenario</h2>
-          <p>Whether you're stranded on a highway or preparing for a cross-country journey, RoadRescue has you covered.</p>
-        </div>
-
-        <div class="grid-3">
-          <div class="card">
-            <div class="card-icon">🚨</div>
-            <h3>Emergency Breakdown Rescue</h3>
-            <p>Broadcast your location to nearby mechanics immediately. Vetted technicians arrive equipped to resolve engine, battery, and tire issues on site.</p>
-          </div>
-
-          <div class="card">
-            <div class="card-icon">💬</div>
-            <h3>Quotation Marketplace</h3>
-            <p>Compare competitive bids from local garages and mobile technicians. View ratings, estimated arrival times, and transparent pricing before selecting.</p>
-          </div>
-
-          <div class="card">
-            <div class="card-icon">📅</div>
-            <h3>Advance Mechanic Booking</h3>
-            <p>Schedule routine maintenance, oil changes, or brake replacements at your home or workplace at your preferred date and time.</p>
-          </div>
-
-          <div class="card">
-            <div class="card-icon">🧭</div>
-            <h3>Road Trip Ready Inspection</h3>
-            <p>Get a comprehensive multi-point vehicle inspection before long travel. Receive an official digital clearance certificate and travel companion options.</p>
-          </div>
-
-          <div class="card">
-            <div class="card-icon">🚛</div>
-            <h3>Flatbed Towing Dispatch</h3>
-            <p>Need specialized transport? Instantly dispatch nearest towing partners for safe vehicle recovery to your preferred garage.</p>
-          </div>
-
-          <div class="card">
-            <div class="card-icon">🚚</div>
-            <h3>Fleet Care Management</h3>
-            <p>Tailored for logistics companies and transport fleets. Manage multiple vehicles, track maintenance history, and streamline emergency repairs.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================== HOW IT WORKS ============================== -->
-    <section id="how-it-works" class="section">
-      <div class="container">
-        <div class="section-header">
-          <div class="eyebrow">Simple & Transparent</div>
-          <h2>How RoadRescue Works</h2>
-          <p>Get back on the road safely in 4 straightforward steps.</p>
-        </div>
-
-        <div class="timeline-grid">
-          <div class="step-card">
-            <div class="step-num">01</div>
-            <h3>Request Assistance</h3>
-            <p>Submit your location and vehicle breakdown details via instant SOS or custom job posting.</p>
-          </div>
-
-          <div class="step-card">
-            <div class="step-num">02</div>
-            <h3>Receive Bids</h3>
-            <p>Nearby mechanics review your request and send competitive price quotes and arrival ETAs.</p>
-          </div>
-
-          <div class="step-card">
-            <div class="step-num">03</div>
-            <h3>Live GPS Tracking</h3>
-            <p>Track your assigned mechanic's real-time location as they travel directly to your vehicle.</p>
-          </div>
-
-          <div class="step-card">
-            <div class="step-num">04</div>
-            <h3>Complete & Review</h3>
-            <p>Pay securely, receive digital service logs, and rate your mechanic to keep our community safe.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================== ABOUT US ============================== -->
-    <section id="about" class="section">
-      <div class="container">
-        <div class="section-header">
-          <div class="eyebrow">Safety & Verification First</div>
-          <h2>About RoadRescue</h2>
-          <p>We are building East Africa's most reliable emergency mechanic infrastructure, putting safety, speed, and trust first.</p>
-        </div>
-
-        <div class="grid-2" style="align-items:center;">
-          <div>
-            <h3 style="font-size:1.8rem; margin-bottom:16px;">Our Rigorous Mechanic Verification Process</h3>
-            <p style="color:var(--text-muted); margin-bottom:20px;">
-              Every technician on RoadRescue undergoes mandatory identity verification and skill certification audits before taking their first job. We maintain clear trust tiers so drivers know exactly who is working on their vehicle.
-            </p>
-            <ul style="list-style:none; display:flex; flex-direction:column; gap:12px;">
-              <li style="display:flex; gap:10px; align-items:center;">✅ <strong>Government ID Audit:</strong> Verified identity documents on record.</li>
-              <li style="display:flex; gap:10px; align-items:center;">✅ <strong>Certification Check:</strong> Validated trade certificates and mechanical licenses.</li>
-              <li style="display:flex; gap:10px; align-items:center;">✅ <strong>Peer Work Portfolio:</strong> Historical project logs showcasing past repairs.</li>
-            </ul>
-          </div>
-
-          <div>
-            <div class="trust-grid">
-              <div class="trust-badge-card">
-                <span class="trust-tier-tag tier-standard">Standard Tier</span>
-                <p style="font-size:0.85rem; color:var(--text-muted); margin-top:8px;">Identity verified mechanics ready for standard service requests.</p>
-              </div>
-
-              <div class="trust-badge-card">
-                <span class="trust-tier-tag tier-verified">Verified Tier</span>
-                <p style="font-size:0.85rem; color:var(--text-muted); margin-top:8px;">ID + Certifications fully approved by platform auditors.</p>
-              </div>
-
-              <div class="trust-badge-card">
-                <span class="trust-tier-tag tier-elite">Elite Tier</span>
-                <p style="font-size:0.85rem; color:var(--text-muted); margin-top:8px;">Top 5% rated mechanics qualified for 24/7 SOS dispatch.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================== CONTACT US & FAQ ============================== -->
-    <section id="contact" class="section">
-      <div class="container">
-        <div class="section-header">
-          <div class="eyebrow">We're Here 24/7</div>
-          <h2>Contact Us & Frequently Asked Questions</h2>
-          <p>Have questions or need assistance? Reach out to our emergency support center anytime.</p>
-        </div>
-
-        <div class="grid-2" style="margin-bottom:60px;">
-          <div class="card">
-            <h3>Send Us a Message</h3>
-            <form onsubmit="return handleContactSubmit(event)" style="margin-top:16px;">
-              <div class="form-group">
-                <label>Full Name</label>
-                <input type="text" id="contactName" class="form-control" required placeholder="John Doe">
-              </div>
-              <div class="form-group">
-                <label>Email Address</label>
-                <input type="email" id="contactEmail" class="form-control" required placeholder="john@example.com">
-              </div>
-              <div class="form-group">
-                <label>Subject</label>
-                <input type="text" id="contactSubject" class="form-control" required placeholder="General inquiry / partnership">
-              </div>
-              <div class="form-group">
-                <label>Message</label>
-                <textarea id="contactMessage" class="form-control" required placeholder="How can we help you?"></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
-            </form>
-          </div>
-
-          <div>
-            <div class="card" style="margin-bottom:20px;">
-              <h3 style="color:var(--accent);">🚨 24/7 Emergency Dispatch Center</h3>
-              <p style="margin-top:8px;">Stranded without internet? Call our direct emergency helpline for instant manual dispatch.</p>
-              <h4 style="font-size:1.4rem; color:var(--text-main); margin-top:10px;">📞 +254 700 900 000</h4>
-              <p style="font-size:0.85rem; color:var(--text-muted); margin-top:4px;">Available 24 hours a day, 7 days a week.</p>
-            </div>
-
-            <div class="card">
-              <h3>Office Locations</h3>
-              <p><strong>Nairobi HQ:</strong> Westlands Road, Horizon Towers Floor 4</p>
-              <p><strong>Nakuru Branch:</strong> Kenyatta Avenue, Westside Mall</p>
-              <p><strong>Email:</strong> support@roadrescue.co.ke</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- FAQ Accordion -->
-        <div class="faq-list">
-          <div class="faq-item">
-            <button class="faq-question" onclick="toggleFaq(this)">How quickly will a mechanic arrive? <span>+</span></button>
-            <div class="faq-answer" style="display:none;">
-              Average arrival time in major urban areas and major highways is 15-25 minutes. When you place an emergency request, mechanics nearby are instantly notified with GPS coordinates.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" onclick="toggleFaq(this)">How are repair prices calculated? <span>+</span></button>
-            <div class="faq-answer" style="display:none;">
-              RoadRescue uses a transparent bidding marketplace. Mechanics submit upfront quotes specifying labor costs, spare parts (if needed), and estimated arrival time. You can choose the best bid before work starts.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" onclick="toggleFaq(this)">What happens if my car cannot be repaired on site? <span>+</span></button>
-            <div class="faq-answer" style="display:none;">
-              If on-site repair is not feasible, RoadRescue allows you to seamlessly dispatch an affiliated flatbed towing partner directly to your location via the platform.
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question" onclick="toggleFaq(this)">How do I become a registered mechanic? <span>+</span></button>
-            <div class="faq-answer" style="display:none;">
-              Click 'Log In / Register', select 'Mechanic', complete your profile details, upload your National ID and mechanical trade certifications, and add past project photos. Once audited, you can begin receiving breakdown jobs!
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+  <!-- ============================== MAIN SPA VIEW CONTAINER ============================== -->
+  <main id="publicViewContent" class="container" style="padding-top:0px; padding-bottom:40px; min-height:80vh;">
+    <!-- Injected dynamically in-place via navigateToPublicPage (NO LONG SCROLLING) -->
   </main>
+
 
   <!-- ============================== FOOTER ============================== -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="#home" class="brand-logo">
+          <a href="#" onclick="navigateToPublicPage('home'); return false;" class="brand-logo">
             <span class="brand-dot"></span>
-            <span>RoadRescue</span>
+            <span>ResQgo</span>
           </a>
-          <p>East Africa's premier emergency roadside assistance & verified mechanic marketplace. Fast, transparent, and always reliable.</p>
+          <p>Kenya's premier emergency roadside assistance & verified mechanic marketplace. Fast, transparent, and always reliable.</p>
         </div>
 
         <div class="footer-col">
           <h4>Navigation</h4>
           <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#how-it-works">How It Works</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#" onclick="navigateToPublicPage('home'); return false;">Home</a></li>
+            <li><a href="#" onclick="navigateToPublicPage('services'); return false;">Services</a></li>
+            <li><a href="#" onclick="navigateToPublicPage('how-it-works'); return false;">How It Works</a></li>
+            <li><a href="#" onclick="navigateToPublicPage('about'); return false;">About Us</a></li>
+            <li><a href="#" onclick="navigateToPublicPage('contact'); return false;">Contact Us</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Services</h4>
           <ul>
-            <li><a href="#services">Emergency Rescue</a></li>
-            <li><a href="#services">Quote Marketplace</a></li>
-            <li><a href="#services">Advance Booking</a></li>
-            <li><a href="#services">Road Trip Inspection</a></li>
-            <li><a href="#services">Fleet Care</a></li>
+            <li><a href="#" onclick="navigateToPublicPage('services'); return false;">Emergency Rescue</a></li>
+            <li><a href="#" onclick="navigateToPublicPage('services'); return false;">Quote Marketplace</a></li>
+            <li><a href="#" onclick="navigateToPublicPage('services'); return false;">Advance Booking</a></li>
+            <li><a href="#" onclick="navigateToPublicPage('services'); return false;">Road Trip Inspection</a></li>
+            <li><a href="#" onclick="navigateToPublicPage('services'); return false;">Fleet Care</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h4>Support & Safety</h4>
           <ul>
-            <li><a href="#contact">24/7 Hotline</a></li>
-            <li><a href="#about">Verification Standards</a></li>
+            <li><a href="#" onclick="navigateToPublicPage('contact'); return false;">24/7 Hotline</a></li>
+            <li><a href="#" onclick="navigateToPublicPage('about'); return false;">Verification Standards</a></li>
             <li><a href="#" onclick="openPortalView(); return false;">App Portal Dashboard</a></li>
-            <li><a href="#" onclick="openAuthModal('admin'); return false;">Admin Login</a></li>
+            <li><a href="#" onclick="openAdminLogin(); return false;">Admin Login</a></li>
           </ul>
+
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p>© 2026 RoadRescue Platform. All rights reserved.</p>
+        <p>© 2026 ResQgo Platform. All rights reserved.</p>
         <p>Built for driver safety & mechanics empowerment.</p>
       </div>
     </div>
   </footer>
+
 
   <!-- ============================== FLOATING SOS FAB ============================== -->
   <button class="fab-sos" onclick="triggerSOS()" title="Trigger Immediate SOS">SOS</button>
@@ -381,7 +109,7 @@
     <div class="portal-topbar">
       <div style="display:flex; align-items:center; gap:12px;">
         <span class="brand-dot"></span>
-        <strong style="font-family:var(--font-head); font-size:1.2rem;">RoadRescue Portal</strong>
+        <strong style="font-family:var(--font-head); font-size:1.2rem;">ResQgo Portal</strong>
         <span id="portalUserBadge" class="badge badge-accent">Guest</span>
       </div>
       <div>
@@ -404,9 +132,10 @@
   <div id="authModal" class="modal-overlay">
     <div class="modal-card">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-        <h3 id="authModalTitle" style="font-size:1.3rem;">Welcome to RoadRescue</h3>
+        <h3 id="authModalTitle" style="font-size:1.3rem;">Welcome to ResQgo</h3>
         <button class="btn btn-ghost btn-sm" onclick="closeAuthModal()" style="border:none;">✕</button>
       </div>
+
 
       <div style="display:flex; gap:10px; margin-bottom:20px; border-bottom:1px solid var(--border); padding-bottom:12px;">
         <button class="btn btn-ghost btn-sm" id="authTabLoginBtn" onclick="switchAuthTab('login')">Log In</button>
@@ -422,9 +151,48 @@
         <div class="form-group">
           <label>Password</label>
           <input type="password" id="loginPassword" class="form-control" placeholder="••••••••" required>
+          <div style="text-align:right; margin-top:4px;">
+            <a href="#" onclick="showForgotPasswordForm(event)" style="font-size:0.8rem; color:var(--accent);">Forgot Password?</a>
+          </div>
         </div>
         <button type="submit" class="btn btn-primary" style="width:100%;">Log In</button>
       </form>
+
+      <!-- Forgot Password Form -->
+      <form id="forgotPasswordForm" style="display:none;" onsubmit="return handleForgotPasswordSubmit(event)">
+        <div id="forgotStep1">
+          <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:14px;">Enter your registered email address to receive a 6-digit password reset code.</p>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" id="forgotEmail" class="form-control" placeholder="you@example.com" required>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;">Send Reset Code →</button>
+        </div>
+
+        <div id="forgotStep2" style="display:none;">
+          <div style="background:rgba(16, 185, 129, 0.12); border:1px solid var(--emerald); border-radius:var(--radius-sm); padding:10px; margin-bottom:14px; font-size:0.85rem;">
+            <strong style="color:var(--emerald);">🔑 Reset Code Dispatched!</strong>
+            <p id="forgotCodeBanner" style="font-size:0.85rem; margin-top:4px; color:var(--text-main);"></p>
+          </div>
+
+          <div class="form-group">
+            <label>6-Digit Reset Code</label>
+            <input type="text" id="resetCodeInput" class="form-control" placeholder="123456" required>
+          </div>
+
+          <div class="form-group">
+            <label>New Password</label>
+            <input type="password" id="newPasswordInput" class="form-control" placeholder="Enter new password" required>
+          </div>
+
+          <button type="button" class="btn btn-emerald" style="width:100%; padding:12px;" onclick="handleResetPasswordSubmit()">Update Password & Log In →</button>
+        </div>
+
+        <div style="margin-top:14px; text-align:center;">
+          <a href="#" onclick="switchAuthTab('login'); return false;" style="font-size:0.8rem; color:var(--text-muted);">← Back to Log In</a>
+        </div>
+      </form>
+
 
       <!-- Registration Form -->
       <form id="registerForm" class="hidden" onsubmit="return handleRegisterForm(event)" style="display:none;">

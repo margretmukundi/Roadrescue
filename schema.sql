@@ -1,11 +1,12 @@
 -- ============================================================================
--- ROADRESCUE — MYSQL DATABASE SCHEMA & SEED DATA
--- Database Name: roadrescue
+-- RESQGO — MYSQL DATABASE SCHEMA & SEED DATA
+-- Database Name: resqgo
 -- Compatible with MySQL 5.7+ / 8.0+ / MariaDB
 -- ============================================================================
 
-CREATE DATABASE IF NOT EXISTS `roadrescue` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE `roadrescue`;
+CREATE DATABASE IF NOT EXISTS `resqgo` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE `resqgo`;
+
 
 SET FOREIGN_KEY_CHECKS = 0;
 
