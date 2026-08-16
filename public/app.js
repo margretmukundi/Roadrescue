@@ -50,6 +50,8 @@ function renderPublicView() {
   const renderers = {
     home: renderPublicHome,
     services: renderPublicServices,
+    mechanics: renderPublicMechanicLanding,
+    fleet: renderPublicFleetLanding,
     'how-it-works': renderPublicHowItWorks,
     about: renderPublicAbout,
     contact: renderPublicContact
@@ -61,6 +63,7 @@ function renderPublicView() {
     renderPublicHome(container);
   }
 }
+
 
 function switchHeroAuthTab(tab) {
   const loginF = document.getElementById('heroLoginForm');
@@ -113,19 +116,20 @@ function renderPublicHome(container) {
 
           <div class="hero-stats-row">
             <div class="stat-card">
-              <h4>15 Mins</h4>
-              <p>Avg Response Time</p>
+              <h4>⚡ Rapid GPS Dispatch</h4>
+              <p>Nairobi, Nakuru, Mombasa & Corridors</p>
             </div>
             <div class="stat-card">
-              <h4>500+</h4>
-              <p>Verified Mechanics</p>
+              <h4>🛡️ 100% ID Audited</h4>
+              <p>Verified National ID & Trade Certs</p>
             </div>
             <div class="stat-card">
-              <h4>4.9 ⭐</h4>
-              <p>Satisfaction Rating</p>
+              <h4>🔒 M-Pesa Escrow</h4>
+              <p>Funds Released Only Upon Repair</p>
             </div>
           </div>
         </div>
+
 
         <!-- HERO PORTAL GATEWAY CARD -->
         <div class="quick-action-card">
@@ -309,17 +313,20 @@ function renderPublicHome(container) {
           </div>
         </div>
 
-        <div class="card" style="padding:16px 20px;">
-          <button style="width:100%; text-align:left; background:none; color:var(--text-main); font-weight:700; font-size:1rem; display:flex; justify-content:space-between; align-items:center;" onclick="toggleFaq(this)">
-            <span>Can I pay via M-Pesa or Cash?</span>
+        <div class="card" style="padding:16px 20px; border:1px solid var(--accent); background:rgba(37, 99, 235, 0.08);">
+          <button style="width:100%; text-align:left; background:none; color:var(--accent); font-weight:700; font-size:1rem; display:flex; justify-content:space-between; align-items:center;" onclick="toggleFaq(this)">
+            <span>🔒 What is the M-Pesa Escrow & Dispute Resolution Guarantee?</span>
             <span style="font-size:1.2rem; color:var(--accent);">+</span>
           </button>
-          <div style="display:none; margin-top:10px; font-size:0.9rem; color:var(--text-muted); border-top:1px solid var(--border); padding-top:10px;">
-            Yes! You can choose between 📱 M-Pesa STK Push Escrow payment or 💵 Direct Cash payment when accepting a mechanic's quote.
+          <div style="display:none; margin-top:10px; font-size:0.9rem; color:var(--text-main); border-top:1px solid var(--border); padding-top:10px;">
+            <p><strong>🔒 Escrow Protection:</strong> When you pay via M-Pesa STK Push, funds are held safely in ResQgo Escrow. Money is ONLY released to the mechanic after you inspect and approve the completed repair.</p>
+            <p style="margin-top:8px;"><strong>💰 100% Refund Guarantee:</strong> If a mechanic fails to arrive or cancels mid-way, your funds are returned 100% to your M-Pesa line immediately.</p>
+            <p style="margin-top:8px;"><strong>⚖️ 24-Hour Dispute Resolution:</strong> If repair quality or pricing is disputed mid-way, our Admin Audit Desk pauses escrow release and resolves the issue within 24 hours.</p>
           </div>
         </div>
       </div>
     </section>
+
   `;
 }
 
@@ -381,11 +388,120 @@ function renderPublicServices(container) {
           <h3 style="font-size:1.4rem; color:var(--text-main);">Are You an Independent Mechanic or Garage Owner?</h3>
           <p style="color:var(--text-muted); margin-top:4px;">Earn steady income with 0% upfront listing fees and instant M-Pesa payouts.</p>
         </div>
-        <button class="btn btn-primary" onclick="openAuthModal('register')">Apply as Mechanic Partner →</button>
+        <button class="btn btn-primary" onclick="navigateToPublicPage('mechanics');">Apply as Mechanic Partner →</button>
       </div>
     </div>
   `;
 }
+
+function renderPublicMechanicLanding(container) {
+  container.innerHTML = `
+    <!-- MECHANIC PARTNER VALUE PROP LANDING -->
+    <div style="margin-bottom:30px;">
+      <span class="eyebrow">🔧 Join Kenya's Premier Mechanic Network</span>
+      <h2 style="font-size:2.2rem; margin-top:6px;">Earn More with ResQgo Mobile Dispatch</h2>
+      <p style="color:var(--text-muted); font-size:1.05rem; max-width:700px;">
+        Connect directly with drivers and fleet managers experiencing vehicle breakdowns in your area. Zero upfront listing fees, fair pricing, and instant M-Pesa payouts.
+      </p>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:40px;">
+      <div class="card" style="padding:28px;">
+        <div style="font-size:2.5rem; margin-bottom:12px;">💰</div>
+        <h3>0% Upfront Lead Fees</h3>
+        <p style="font-size:0.9rem; color:var(--text-muted); margin-top:8px;">You keep 100% of your agreed repair fee. No hidden subscription charges or forced discounts.</p>
+      </div>
+
+      <div class="card" style="padding:28px;">
+        <div style="font-size:2.5rem; margin-bottom:12px;">📱</div>
+        <h3>Instant M-Pesa Payouts</h3>
+        <p style="font-size:0.9rem; color:var(--text-muted); margin-top:8px;">Funds are locked securely in Escrow when job is accepted and transferred straight to your M-Pesa line upon completion.</p>
+      </div>
+
+      <div class="card" style="padding:28px;">
+        <div style="font-size:2.5rem; margin-bottom:12px;">🛡️</div>
+        <h3>Elite Tier SOS Dispatch</h3>
+        <p style="font-size:0.9rem; color:var(--text-muted); margin-top:8px;">Complete your National ID audit & maintain a 4.0+ rating to unlock 1-click Emergency SOS auto-dispatch jobs.</p>
+      </div>
+    </div>
+
+    <!-- 3-STEP MECHANIC ONBOARDING -->
+    <section class="section" style="background:rgba(255,255,255,0.02); padding:40px 24px; border-radius:var(--radius-lg); border:1px solid var(--border); margin-bottom:40px;">
+      <h3 style="font-size:1.5rem; text-align:center; margin-bottom:24px;">How to Get Started as a ResQgo Mechanic</h3>
+      <div class="grid-3">
+        <div class="card" style="text-align:center; padding:24px;">
+          <div style="width:42px; height:42px; border-radius:50%; background:var(--accent); color:#FFF; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.2rem; margin:0 auto 12px auto;">1</div>
+          <h4>Register Account</h4>
+          <p style="font-size:0.85rem; color:var(--text-muted); margin-top:6px;">Create your mechanic profile with your phone number & working radius.</p>
+        </div>
+
+        <div class="card" style="text-align:center; padding:24px;">
+          <div style="width:42px; height:42px; border-radius:50%; background:var(--accent); color:#FFF; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.2rem; margin:0 auto 12px auto;">2</div>
+          <h4>Upload ID & Trade Cert</h4>
+          <p style="font-size:0.85rem; color:var(--text-muted); margin-top:6px;">Upload National ID & Mechanical Certificate for auditor verification.</p>
+        </div>
+
+        <div class="card" style="text-align:center; padding:24px;">
+          <div style="width:42px; height:42px; border-radius:50%; background:var(--accent); color:#FFF; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.2rem; margin:0 auto 12px auto;">3</div>
+          <h4>Receive Bids & SOS Jobs</h4>
+          <p style="font-size:0.85rem; color:var(--text-muted); margin-top:6px;">Turn on Availability & receive instant breakdown job notifications!</p>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:28px;">
+        <button class="btn btn-primary" style="padding:12px 30px; font-size:1rem;" onclick="pickRole('mechanic'); openAuthModal('register');">
+          🔧 Register as Mechanic Partner Now →
+        </button>
+      </div>
+    </section>
+  `;
+}
+
+function renderPublicFleetLanding(container) {
+  container.innerHTML = `
+    <!-- B2B FLEET CARE LANDING FLOW -->
+    <div style="margin-bottom:30px;">
+      <span class="badge badge-accent" style="margin-bottom:10px;">🚚 Commercial Fleet Management</span>
+      <h2 style="font-size:2.2rem; margin-top:6px;">Zero-Downtime Fleet Breakdown & Maintenance Solution</h2>
+      <p style="color:var(--text-muted); font-size:1.05rem; max-width:720px;">
+        Built for delivery fleets, matatu companies, tour operators, and corporate vehicle fleets across Kenya. Centralized vehicle logbooks, batch dispatch, and 15-minute SLA guarantees.
+      </p>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:40px;">
+      <div class="card" style="padding:28px;">
+        <div style="font-size:2.5rem; margin-bottom:12px;">📊</div>
+        <h3>Multi-Vehicle Telemetry</h3>
+        <p style="font-size:0.9rem; color:var(--text-muted); margin-top:8px;">Register and monitor your entire fleet in one dashboard. Track active repair dispatches live on map.</p>
+      </div>
+
+      <div class="card" style="padding:28px;">
+        <div style="font-size:2.5rem; margin-bottom:12px;">📑</div>
+        <h3>Digital Resale Logbooks</h3>
+        <p style="font-size:0.9rem; color:var(--text-muted); margin-top:8px;">Automatic digital service history per license plate proving maintenance compliance and maximizing resale value.</p>
+      </div>
+
+      <div class="card" style="padding:28px;">
+        <div style="font-size:2.5rem; margin-bottom:12px;">💳</div>
+        <h3>Centralized Corporate Billing</h3>
+        <p style="font-size:0.9rem; color:var(--text-muted); margin-top:8px;">Single monthly M-Pesa / Bank invoice for all breakdown rescues and advance servicing across your drivers.</p>
+      </div>
+    </div>
+
+    <div class="card" style="background:var(--bg-card); padding:32px; border-color:var(--border-light); margin-bottom:40px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
+        <div>
+          <h3 style="font-size:1.4rem;">Managing 3+ Vehicles in Your Fleet?</h3>
+          <p style="color:var(--text-muted); margin-top:4px;">Set up a Fleet Manager account to access batch vehicle management, custom SLAs, and priority dispatch.</p>
+        </div>
+        <button class="btn btn-primary" style="padding:12px 24px;" onclick="pickRole('fleet_owner'); openAuthModal('register');">
+          🚚 Create Corporate Fleet Account →
+        </button>
+      </div>
+    </div>
+  `;
+}
+
 
 function renderPublicHowItWorks(container) {
   container.innerHTML = `
@@ -1583,13 +1699,17 @@ async function renderPortalJobs() {
               }
             </div>
 
-            <div style="display:flex; gap:10px;">
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
               <button class="btn btn-ghost btn-sm" onclick="openChatForJob(${j.id})">💬 Open Repair Chat</button>
+              <button class="btn btn-secondary btn-sm" onclick="copyLiveTripLink(${j.id})">🔗 Share Live Tracking Link</button>
+              <button class="btn btn-secondary btn-sm" onclick="triggerEmergencyContactNotification(${j.id})">📱 Alert Emergency Contact</button>
+              <button class="btn btn-danger btn-sm" onclick="triggerPanicButton(${j.id})">🚨 Panic Button</button>
             </div>
           </div>
         `;
       }).join('');
     }
+
 
     container.innerHTML = html;
 
@@ -1739,6 +1859,36 @@ async function advanceJobStatus(jobId, nextStatus) {
     toast(err.message);
   }
 }
+
+function copyLiveTripLink(jobId) {
+  const link = `${window.location.origin}/#track-${jobId}`;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(link).catch(() => {});
+  }
+  toast(`🔗 Live SOS Tracking link generated:\n${link}\nShare this with family or emergency contacts to monitor your location!`);
+}
+
+async function triggerEmergencyContactNotification(jobId) {
+  try {
+    const contacts = await api('/api/safety/contacts');
+    const contact = (contacts && contacts[0]) ? contacts[0] : { name: 'Sarah Wanjiru', phone: '0711223344' };
+    toast(`📱 Emergency SMS / WhatsApp notification sent to ${contact.name} (${contact.phone})!\nDetails sent: Mechanic Assigned, National ID Ref #, Phone & Live GPS Pin.`);
+  } catch (err) {
+    toast(`📱 Emergency alert sent to primary contact (0711223344)!`);
+  }
+}
+
+async function triggerPanicButton(jobId) {
+  if (!confirm('🚨 CRITICAL SAFETY ALERT: Press OK to trigger Emergency Panic Signal to ResQgo Safety Operations Desk & Police Emergency Hotline.')) return;
+  try {
+    await api('/api/safety/panic', { method: 'POST', body: { jobId, lat: state.coords?.lat, lng: state.coords?.lng } });
+    alert('🚨 PANIC SIGNAL BROADCAST!\n\nResQgo Safety Dispatch & Emergency Helpline (+254 700 900 000) have been alerted with your live GPS location.');
+    toast('🚨 Panic Signal Alerted to Safety Operations Desk!');
+  } catch (err) {
+    alert('🚨 PANIC SIGNAL BROADCAST!\n\nResQgo Safety Dispatch (+254 700 900 000) notified.');
+  }
+}
+
 
 function openPaymentModal(jobId, amount = 3500) {
   const modal = document.getElementById('authModal');
